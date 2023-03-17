@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    background-color: blue;
+}
+
+.calcBody{
+    display: flex;
+}
+
+.calcDisplay{
+    display: flex;
+}
+
+.calcControls{
+    display: flex;
+}
+
+.digits button{
+    background-color: orange;
+    padding: 5px;
+}
