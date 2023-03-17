@@ -36,3 +36,8 @@ function divide(operand1, operand2)
     }
     return (operand1 / operand2);
 }
+
+let displayValue = 1234567;
+
+const display = document.querySelector('.calcDisplay');
+display.textContent = `${displayValue}`;
