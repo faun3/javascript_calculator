@@ -31,8 +31,7 @@ function divide(operand1, operand2)
 {
     if (operand2 === 0){
         alert("Division by 0 is impossible!");
-        console.log("Divide by 0!");
-        return;
+        return operand1;
     }
     return (operand1 / operand2);
 }
@@ -105,6 +104,11 @@ for (let i = 0; i < operations.length - 1; i++){
             }
             else{
                 currentOperation = operations[i].className;
+            }
+            if (pastOperation === "/"  && displayValue === 0){
+                displayValue = 1;
+                pastOperation = currentOperation;
+                alert("Operation result ignored (division by 0)!");
             }
             if (!currentValue){
                 currentValue = displayValue;
