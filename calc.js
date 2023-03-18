@@ -94,8 +94,10 @@ for (let i = 0; i < operations.length - 1; i++){
     }
     if (i == 4){
         operations[i].addEventListener('click', () => {
-            displayValue = operate(operation, currentValue, displayValue);
-            refreshDisplay(displayValue);
+            if (operation !== ""){
+                displayValue = operate(operation, currentValue, displayValue);
+                refreshDisplay(displayValue);
+            }
         });
     }
 }
