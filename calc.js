@@ -55,12 +55,21 @@ clearButton.addEventListener('click', () => {
 
 
 let digits = document.querySelectorAll('.digits > button');
-console.table(digits);
 for (let i = 0; i < digits.length; i++){
     digits[i].addEventListener('click', () => {
         let digitValue = parseInt(digits[i].className);
         displayValue *= 10;
         displayValue += digitValue;
         refreshDisplay(displayValue);
-    })
+    });
+}
+
+let operations = document.querySelectorAll('.operations > button');
+for (let i = 0; i < operations.length - 2; i++){
+    console.log(operations[i]);
+    operations[i].addEventListener('click', () => {
+        let operation = operations[i].className;
+        displayValue = operate(operation, displayValue, 15);
+        refreshDisplay(displayValue);
+    });
 }
