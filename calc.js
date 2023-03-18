@@ -37,7 +37,20 @@ function divide(operand1, operand2)
     return (operand1 / operand2);
 }
 
+function refreshDisplay(displayValue)
+{
+    display.textContent = `${displayValue}`;
+}
+
 let displayValue = 1234567;
 
 const display = document.querySelector('.calcDisplay');
 display.textContent = `${displayValue}`;
+
+displayValue = 12;
+let clearButton = document.querySelector('.operations button.clear');
+console.log(clearButton);
+clearButton.addEventListener('click', () => {
+    displayValue++;
+    refreshDisplay(displayValue);
+});
