@@ -1,10 +1,16 @@
 body{
     display: flex;
-    background-color: blue;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .calcBody{
     display: flex;
+    align-self: center;
+    justify-self: center;
+    flex-direction: column;
+    flex: 1 1 auto;
 }
 
 .calcDisplay{
