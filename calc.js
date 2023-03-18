@@ -50,6 +50,8 @@ function refreshDisplay(displayValue)
 let displayValue = 0;
 let currentValue = 0;
 let operation ="";
+let pastOperation = "";
+let currentOperation = "";
 
 const display = document.querySelector('.calcDisplay');
 display.textContent = `${displayValue}`;
@@ -76,33 +78,47 @@ let operations = document.querySelectorAll('.operations > button');
 for (let i = 0; i < operations.length - 1; i++){
     if (i === 0 || i === 1){
         operations[i].addEventListener('click', () => {
-            operation = operations[i].className;
-            displayValue = operate(operation, currentValue, displayValue);
+            if (pastOperation === ""){
+                pastOperation = operations[i].className;
+                currentOperation = pastOperation;
+            }
+            else{
+                currentOperation = operations[i].className;
+            }
+            displayValue = operate(pastOperation, currentValue, displayValue);
             currentValue = displayValue;
             displayValue = 0;
             refreshDisplay(currentValue);
+            pastOperation = currentOperation;
         });
     }
     if (i === 2 || i === 3){
         operations[i].addEventListener('click', () => {
-            operation = operations[i].className;
+            if (pastOperation === ""){
+                pastOperation = operations[i].className;
+                currentOperation = pastOperation;
+            }
+            else{
+                currentOperation = operations[i].className;
+            }
             if (!currentValue){
                 currentValue = displayValue;
                 displayValue = 0;
                 refreshDisplay(currentValue);
             }
             else{
-                displayValue = operate(operation, currentValue, displayValue);
+                displayValue = operate(pastOperation, currentValue, displayValue);
                 currentValue = displayValue;
                 displayValue = 0;
                 refreshDisplay(currentValue);
             }
+            pastOperation = currentOperation;
         });
     }
     if (i === 4){
         operations[i].addEventListener('click', () => {
-            if (operation !== ""){
-                displayValue = operate(operation, currentValue, displayValue);
+            if (pastOperation !== ""){
+                displayValue = operate(pastOperation, currentValue, displayValue);
                 refreshDisplay(displayValue);
                 currentValue = displayValue;
                 displayValue = 0;
