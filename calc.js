@@ -57,7 +57,8 @@ display.textContent = `${displayValue}`;
 let clearButton = document.querySelector('.operations button.clear');
 clearButton.addEventListener('click', () => {
     displayValue = 0;
-    refreshDisplay(displayValue);
+    currentValue = 0;
+    display.textContent = "";
 });
 
 
@@ -77,19 +78,35 @@ for (let i = 0; i < operations.length - 1; i++){
     if (i == 0 || i == 1){
         operations[i].addEventListener('click', () => {
             operation = operations[i].className;
-            displayValue = operate(operation, displayValue, 0);
-            currentValue = displayValue;
-            displayValue = 0;
-            refreshDisplay(displayValue);
+            if (!currentValue){
+                displayValue = operate(operation, displayValue, 0);
+                currentValue = displayValue;
+                displayValue = 0;
+                refreshDisplay(currentValue);
+            }
+            else{
+                displayValue = operate(operation, currentValue, displayValue);
+                currentValue = displayValue;
+                displayValue = 0;
+                refreshDisplay(currentValue);
+            }
         });
     }
     if (i == 2 || i == 3){
         operations[i].addEventListener('click', () => {
             operation = operations[i].className;
-            displayValue = operate(operation, displayValue, 1);
-            currentValue = displayValue;
-            displayValue = 0;
-            refreshDisplay(displayValue);
+            if (!currentValue){
+                displayValue = operate(operation, displayValue, 1);
+                currentValue = displayValue;
+                displayValue = 0;
+                refreshDisplay(displayValue);
+            }
+            else{
+                displayValue = operate(operation, currentValue, displayValue);
+                currentValue = displayValue;
+                displayValue = 0;
+                refreshDisplay(currentValue);
+            }
         });
     }
     if (i == 4){
