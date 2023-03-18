@@ -39,6 +39,11 @@ function divide(operand1, operand2)
 
 function refreshDisplay(displayValue)
 {
+    
+    if (parseInt(displayValue.toFixed(2)) !== displayValue){
+        displayValue = parseFloat(displayValue.toPrecision(5));
+    }
+
     if (displayValue === 0){
         display.TextContent = "";
     }
