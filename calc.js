@@ -77,17 +77,10 @@ for (let i = 0; i < operations.length - 1; i++){
     if (i === 0 || i === 1){
         operations[i].addEventListener('click', () => {
             operation = operations[i].className;
-            if (!currentValue){
-                currentValue = displayValue;
-                displayValue = 0;
-                refreshDisplay(currentValue);
-            }
-            else{
-                displayValue = operate(operation, currentValue, displayValue);
-                currentValue = displayValue;
-                displayValue = 0;
-                refreshDisplay(currentValue);
-            }
+            displayValue = operate(operation, currentValue, displayValue);
+            currentValue = displayValue;
+            displayValue = 0;
+            refreshDisplay(currentValue);
         });
     }
     if (i === 2 || i === 3){
@@ -99,7 +92,6 @@ for (let i = 0; i < operations.length - 1; i++){
                 refreshDisplay(currentValue);
             }
             else{
-                displayValue = 1;
                 displayValue = operate(operation, currentValue, displayValue);
                 currentValue = displayValue;
                 displayValue = 0;
