@@ -74,12 +74,10 @@ for (let i = 0; i < digits.length; i++){
 
 let operations = document.querySelectorAll('.operations > button');
 for (let i = 0; i < operations.length - 1; i++){
-    console.log(operations[i]);
-    if (i == 0 || i == 1){
+    if (i === 0 || i === 1){
         operations[i].addEventListener('click', () => {
             operation = operations[i].className;
             if (!currentValue){
-                displayValue = operate(operation, displayValue, 0);
                 currentValue = displayValue;
                 displayValue = 0;
                 refreshDisplay(currentValue);
@@ -92,16 +90,16 @@ for (let i = 0; i < operations.length - 1; i++){
             }
         });
     }
-    if (i == 2 || i == 3){
+    if (i === 2 || i === 3){
         operations[i].addEventListener('click', () => {
             operation = operations[i].className;
             if (!currentValue){
-                displayValue = operate(operation, displayValue, 1);
                 currentValue = displayValue;
                 displayValue = 0;
-                refreshDisplay(displayValue);
+                refreshDisplay(currentValue);
             }
             else{
+                displayValue = 1;
                 displayValue = operate(operation, currentValue, displayValue);
                 currentValue = displayValue;
                 displayValue = 0;
@@ -109,11 +107,13 @@ for (let i = 0; i < operations.length - 1; i++){
             }
         });
     }
-    if (i == 4){
+    if (i === 4){
         operations[i].addEventListener('click', () => {
             if (operation !== ""){
                 displayValue = operate(operation, currentValue, displayValue);
                 refreshDisplay(displayValue);
+                currentValue = displayValue;
+                displayValue = 0;
             }
         });
     }
