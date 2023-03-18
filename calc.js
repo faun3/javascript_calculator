@@ -42,7 +42,9 @@ function refreshDisplay(displayValue)
     display.textContent = `${displayValue}`;
 }
 
-let displayValue = 1234567;
+let displayValue = 0;
+let currentValue = 0;
+let operation ="";
 
 const display = document.querySelector('.calcDisplay');
 display.textContent = `${displayValue}`;
@@ -65,11 +67,30 @@ for (let i = 0; i < digits.length; i++){
 }
 
 let operations = document.querySelectorAll('.operations > button');
-for (let i = 0; i < operations.length - 2; i++){
+for (let i = 0; i < operations.length - 1; i++){
     console.log(operations[i]);
-    operations[i].addEventListener('click', () => {
-        let operation = operations[i].className;
-        displayValue = operate(operation, displayValue, 15);
-        refreshDisplay(displayValue);
-    });
+    if (i == 0 || i == 1){
+        operations[i].addEventListener('click', () => {
+            operation = operations[i].className;
+            displayValue = operate(operation, displayValue, 0);
+            currentValue = displayValue;
+            displayValue = 0;
+            refreshDisplay(displayValue);
+        });
+    }
+    if (i == 2 || i == 3){
+        operations[i].addEventListener('click', () => {
+            operation = operations[i].className;
+            displayValue = operate(operation, displayValue, 1);
+            currentValue = displayValue;
+            displayValue = 0;
+            refreshDisplay(displayValue);
+        });
+    }
+    if (i == 4){
+        operations[i].addEventListener('click', () => {
+            displayValue = operate(operation, currentValue, displayValue);
+            refreshDisplay(displayValue);
+        });
+    }
 }
