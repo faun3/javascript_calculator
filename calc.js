@@ -47,10 +47,20 @@ let displayValue = 1234567;
 const display = document.querySelector('.calcDisplay');
 display.textContent = `${displayValue}`;
 
-displayValue = 12;
 let clearButton = document.querySelector('.operations button.clear');
-console.log(clearButton);
 clearButton.addEventListener('click', () => {
-    displayValue++;
+    displayValue = 0;
     refreshDisplay(displayValue);
 });
+
+
+let digits = document.querySelectorAll('.digits > button');
+console.table(digits);
+for (let i = 0; i < digits.length; i++){
+    digits[i].addEventListener('click', () => {
+        let digitValue = parseInt(digits[i].className);
+        displayValue *= 10;
+        displayValue += digitValue;
+        refreshDisplay(displayValue);
+    })
+}
