@@ -39,7 +39,12 @@ function divide(operand1, operand2)
 
 function refreshDisplay(displayValue)
 {
-    display.textContent = `${displayValue}`;
+    if (displayValue === 0){
+        display.TextContent = "";
+    }
+    else{
+        display.textContent = `${displayValue}`;
+    }
 }
 
 let displayValue = 0;
