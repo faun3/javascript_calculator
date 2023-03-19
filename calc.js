@@ -44,7 +44,7 @@ function refreshDisplay(displayValue)
     }
 
     if (displayValue === 0){
-        display.TextContent = "";
+        display.textContent = `${displayValue}`;
     }
     else{
         display.textContent = `${displayValue}`;
@@ -64,7 +64,7 @@ let clearButton = document.querySelector('.operations button.clear');
 clearButton.addEventListener('click', () => {
     displayValue = 0;
     currentValue = 0;
-    display.textContent = "";
+    display.textContent = `${displayValue}`;
 });
 
 
